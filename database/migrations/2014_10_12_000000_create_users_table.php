@@ -17,11 +17,18 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('avatar');
+            $table->unsignedInteger('role_id')->default(1);
+            $table->boolean('admin')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+            #$table->foreign('role_id')->references('id')->on('roles')->onDelete('');
         });
+
+
     }
 
     /**
